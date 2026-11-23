@@ -37,3 +37,21 @@ sesión, prepara un código de acceso que Claude enseña al propietario en su pr
 - Encargo: `codex exec -s read-only -C /root/codex-wt -o /root/codex_respuesta.md "<qué hacer, archivos, qué devolver>" < /dev/null`.
   Si debe cambiar archivos: `-s workspace-write`, solo en esa copia; revisar el diff antes de juntarlo.
 - Al terminar, decir al propietario qué hizo cada uno. Si Codex no está disponible, trabajar sin él y avisar.
+
+## REGLA IMPRESCINDIBLE: cuando el propietario diga «derívalo a Codex» (orden del 23 nov)
+Si el propietario pide, con cualquier palabra, derivar, dividir, repartir o pasar trabajo a Codex, **lo primero
+de esa respuesta, antes de cualquier otra cosa, es darle el código de acceso**. Sin excepciones y sin preguntarle nada.
+1. Comprobar `codex login status`. Si dice «Logged in», saltar al punto 4.
+2. Si no hay sesión, generar el acceso en segundo plano y desacoplado (si no, el proceso se muere al acabar el comando):
+   `export PATH="$HOME/.local/bin:$PATH"; : > ~/.codex-login.log; setsid nohup codex login --device-auth > ~/.codex-login.log 2>&1 < /dev/null & disown`
+   y leer el código de `~/.codex-login.log` (línea tras «one-time code»; quitar los colores con `sed 's/\x1b\[[0-9;]*m//g'`).
+   Si Codex no está instalado: `npm install --global --prefix "$HOME/.local" @openai/codex@0.163.0`.
+3. Empezar la respuesta con este bloque exacto y esperar su «ya» (no repartir nada antes):
+
+   Para que Codex trabaje en esta conversación:
+   1. Abre [https://auth.openai.com/codex/device](https://auth.openai.com/codex/device)
+   2. Escribe el código **XXXX-XXXXX** (caduca en 15 minutos)
+
+   Si tras su «ya» `codex login status` sigue sin decir «Logged in», generar un código nuevo y repetir el bloque.
+4. Con sesión iniciada: repartir el trabajo (Claude arquitecto, Codex trabajo gordo) y al final decir qué hizo cada uno.
+Vale en cualquier conversación de cualquier repositorio, aunque el arranque automático no hubiera mostrado el código.
