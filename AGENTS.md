@@ -2,6 +2,9 @@
 
 Este archivo lo leen los dos agentes al empezar. Cumplirlo siempre, aunque la conversación sea nueva.
 
+**Norma absoluta de trabajo (orden del propietario):** mínimo consumo de recursos sin recortar
+requisitos, calidad ni verificaciones. Detalle en `docs/NORMAS_TRABAJO.md`.
+
 ## Al empezar cualquier conversación (obligatorio)
 1. Leer `ESTADO.md` y las tareas abiertas. No repetir lo que ya está hecho o asignado.
 2. Decir al propietario en 2-3 líneas, sin tecnicismos, cómo se reparte el trabajo pedido
