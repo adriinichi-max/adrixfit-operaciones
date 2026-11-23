@@ -30,6 +30,18 @@ requisitos, calidad ni verificaciones. Detalle en `docs/NORMAS_TRABAJO.md`.
 Antes de parar, guardar y SUBIR `progreso/<tarea>.md` con lo hecho, lo que falta, decisiones y quién sigue.
 Lo no subido se pierde: las conversaciones no son compartidas.
 
+## Colaboración entre Codex y Claude (igual que en adrixfit-app)
+- Una rama y un worktree por tarea. Nunca trabajar ambos agentes sobre el mismo directorio.
+- No reescribir, descartar ni fusionar trabajo del otro agente sin revisar. Acordar un responsable por archivo.
+- Una sola persona o agente coordina la integración; conservar siempre un camino de reversión.
+- **Apoyarse siempre en Codex (orden del propietario, 22 nov):** toda conversación, de Claude o de Codex,
+  divide el trabajo con la otra herramienta para que ninguna gaste tantos créditos. Al empezar, repartir,
+  hacer solo la parte propia y dejar la del otro como encargo listo para pegar. No repetir lo que el otro ya hizo.
+- Registrar el estado real: preparado, probado, desplegado y cargado son etapas diferentes. No afirmar
+  una copia o carga real basándose en un ensayo.
+- Respetar las autorizaciones vigentes del propietario sin pedirlas repetidamente. No contratar servicios
+  ni ampliar planes por una autorización de otro presupuesto.
+
 ## Codex desde el terminal (arranque automático)
 Al abrir una conversación en la nube, `.claude/hooks/session-start.sh` instala Codex si falta y, si no tiene
 sesión, prepara un código de acceso que Claude enseña al propietario en su primera respuesta.
